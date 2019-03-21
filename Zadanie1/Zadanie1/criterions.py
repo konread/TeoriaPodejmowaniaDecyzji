@@ -28,3 +28,17 @@ def hurwitz(investmentPlanTable, gamma):
             option = row[0]
 
     return option,currentValue
+
+def laplace(investmentPlanTable):
+    probability = 1.0 / len(investmentPlanTable[0][2:])
+    currentValue = 0.0
+    option = 0
+    for row in investmentPlanTable:
+        newValue = 0.0
+        for value in row[2:]:
+            newValue += (probability*value)
+        if newValue > currentValue:
+            currentValue = newValue
+            option = row[0]
+
+    return option,currentValue
