@@ -1,24 +1,17 @@
-import pandas as pd
-import math
-
-def readCSV(filename):
-    data = pd.read_csv(filename, sep = ',', index_col='option')
-    return data.reset_index().values
-
-def minMaxUsefull(investmentPlanTable):
-    currentValue = 0.0
-    option = 0
-    for row in investmentPlanTable:
-        newValue = min(row[2:])
-        if newValue > currentValue:
-            currentValue = newValue
-            option = row[0]
-
-    return option,currentValue
+import criterions as crit
 
 if __name__ == '__main__':
-    investmentPlanTable = readCSV("source.csv")
+    investmentPlanTable = crit.readCSV("source.csv")
 
-    option,max = minMaxUsefull(investmentPlanTable)
-    print('MiniMax usefull result: ')
+    option,max = crit.minMaxUsefull(investmentPlanTable)
+    print('MiniMax usefull criterion: ')
     print('Chosen option: ' + str(int(option)))
+    print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
+
+    print('')
+
+    option,max = crit.hurwitz(investmentPlanTable, 0.25)
+    print('Hurwitz criterion: ')
+    print('Chosen option: ' + str(int(option)))
+    print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
+    print('')
