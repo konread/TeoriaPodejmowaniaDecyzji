@@ -42,3 +42,38 @@ def laplace(investmentPlanTable):
             option = row[0]
 
     return option,currentValue
+
+def savage(investmentPlanTable):
+    currentValue = 0.0
+    option = 0
+
+    max_column = []
+    i = 1
+
+    while i <= len(investmentPlanTable[0][2:]):
+        max_column.append(max(investmentPlanTable[:, i + 1]))
+
+        i += 1
+
+    max_row = []
+
+    for row in investmentPlanTable:
+        matrix_row = []
+        i = 0
+
+        for value in row[2:]:
+            matrix_row.append(round(max_column[i] - value, 1))
+            i += 1
+
+        max_row.append(max(matrix_row))
+
+        option = row[max_row.index(min(max_row))]
+
+    return option,currentValue
+
+def bayes(investmentPlanTable):
+    currentValue = 0.0
+    option = 0
+
+
+    return option,currentValue

@@ -4,7 +4,7 @@ if __name__ == '__main__':
     investmentPlanTable = crit.readCSV("source.csv")
 
     option,value = crit.minMaxUsefull(investmentPlanTable)
-    print('MiniMax usefull criterion: ')
+    print('MinMax usefull criterion: ')
     print('Chosen option: ' + str(int(option)))
     print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
     print('')
@@ -17,6 +17,18 @@ if __name__ == '__main__':
 
     option,value = crit.laplace(investmentPlanTable)
     print('Laplace criterion: ')
+    print('Chosen option: ' + str(int(option)))
+    print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
+    print('')
+
+    option,value = crit.savage(investmentPlanTable)
+    print('Savage criterion: ')
+    print('Chosen option: ' + str(int(option)))
+    print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
+    print('')
+
+    option,value = crit.bayes(investmentPlanTable)
+    print('Bayes criterion: ')
     print('Chosen option: ' + str(int(option)))
     print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
     print('')
