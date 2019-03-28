@@ -21,7 +21,7 @@ if __name__ == '__main__':
     print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
     print('')
     
-    option,value = crit.bayes(investmentPlanTable, [0.26, 0.25, 0.25, 0.25])
+    option,value = crit.bayes(investmentPlanTable, [0.25, 0.25, 0.25, 0.25])
     print('Bayes criterion: ')
     print('Chosen option: ' + str(int(option)))
     print('The amount of investment: ' + str(int(investmentPlanTable[int(option-1)][1])) + ' tys. zł')
